@@ -1,10 +1,11 @@
-// Communication between 2 processes
-//  - send data from child process to parent process
+// Sending data from child process to parent process
 
 #include <stdio.h>
 #include <unistd.h> // fork, pipe, write
 
 int main(int argc, char* argv[]) {
+    printf("***************************************\n");
+
     int fd[2]; // This is normal integer array
     // After fd is send to pipe() its elements become file descriptors
     //  - fd[0] is always for reading from pipe
@@ -43,5 +44,7 @@ int main(int argc, char* argv[]) {
         close (fd[0]);
         printf("Got from child process %d\n", y);
     }
+
+    printf("---------------------------------------\n");
     return 0;
 }

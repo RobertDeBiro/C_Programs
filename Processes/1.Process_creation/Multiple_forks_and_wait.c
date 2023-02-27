@@ -1,10 +1,20 @@
-// Create multiple processes
+/*
+ * Final schedule of the processes:
+ *
+ *              O Parent
+ *            / |
+ *           /  O X
+ *          /   |
+ *       Z O    O Y
+ */
 
 #include <stdio.h>
 #include <unistd.h> // fork()
 #include <sys/wait.h> // wait()
 
 int main(int argc, char* argv[]) {
+    printf("***************************************\n");
+    
     int id1 = fork();
     int id2 = fork();
     if (id1 == 0) {
@@ -29,5 +39,6 @@ int main(int argc, char* argv[]) {
         }
     } while (res != -1);
     
+    printf("---------------------------------------\n");
     return 0;
 }
