@@ -1,16 +1,3 @@
-/*
- * wait(int *wstatus) -> pid_t
- *
- *  - wait for process to change state
- *  - Return value:
- *      - on success, returns the process ID of the terminated child
- *      - on failure, -1 is returned
- *  - included in <sys/wait.h>
- * 
- * References:
- *  - https://man7.org/linux/man-pages/man2/wait.2.html
- */
-
 #include <stdio.h> // flush
 #include <unistd.h> // fork
 #include <sys/wait.h> // wait
