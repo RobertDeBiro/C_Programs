@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "type_traits": "c",
+        "stdlib.h": "c",
+        "signal.h": "c",
+        "pthread.h": "c",
+        "mosquitto.h": "c"
+    }
+}
