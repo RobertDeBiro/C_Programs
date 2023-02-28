@@ -3,7 +3,7 @@
  */
 
 #include <stdio.h>
-#include <unistd.h> // fork, pipe, write
+#include <unistd.h> // fork, pipe, write, read, close
 
 int main(int argc, char* argv[]) {
     printf("***************************************\n");
@@ -24,20 +24,27 @@ int main(int argc, char* argv[]) {
     }
 
     if (id == 0) {
-        close (fd[0]); // We won't read from pipe in this process, so we are closing that file descriptor
+        // We won't read from pipe in this process, so we are closing that file descriptor
+        close (fd[0]);
+        
         int x;
         printf("Input a number: ");
         scanf("%d", &x);
-        // Read something from a variable and write that to the pipe
+        // Read something from a variable and after 3 s write that to the pipe
+        sleep(3);
         if (write(fd[1], &x, sizeof(x)) == -1) {
             printf("An error occured with writing to the pipe\n");
             return 3;
         }
         close (fd[1]);
     } else {
-        close (fd[1]); // We won't write to the pipe in this process, so we are closing that file descriptor
+        // We won't write to the pipe in this process, so we are closing that file descriptor
+        close (fd[1]);
+
         int y;
         // Read something from the pipe and write that to a variable
+        //  - read command waits that actually something is written to the fd[0]
+        //  - hence, in this example it would wait for 3 s
         if (read(fd[0], &y, sizeof(y)) == -1) {
             printf("An error occured with reading from the pipe\n");
             return 4;
