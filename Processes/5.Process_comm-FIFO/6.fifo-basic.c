@@ -34,6 +34,8 @@ int openRDWR()
 }
 
 int main(int argc, char* argv[]) {
+    printf("***************************************\n");
+
     if (mkfifo("FIFOs/myfifo1", 0777) == -1) {
         if (errno != EEXIST) {
             printf("Could not create fifo file\n");
@@ -65,5 +67,6 @@ int main(int argc, char* argv[]) {
     close(fd);
     printf("Closed\n");
 
+    printf("---------------------------------------\n");
     return 0;
 }

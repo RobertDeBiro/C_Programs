@@ -1,4 +1,6 @@
-// Sending data from child process to parent process
+/*
+ * Sending data from child process to parent process
+ */
 
 #include <stdio.h>
 #include <unistd.h> // fork, pipe, write
