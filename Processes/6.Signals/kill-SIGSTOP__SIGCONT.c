@@ -1,5 +1,6 @@
-// Signals
-// - SIGSTOP and SIGCONT
+/*
+ * Stop and continue child process from the parent process
+ */
 
 #include <stdio.h>
 #include <stdlib.h> // srand, rand
@@ -9,17 +10,22 @@
 #include <signal.h> // kill
 
 int main(int argc, char* argv[]) {
+    printf("***************************************\n");
+
     int pid = fork();
     if (pid == -1) {
         return 1;
     }
 
-    if (pid == 0) {
+    if (pid == 0)
+    {
         while(1) {
             printf("Some output\n");
             usleep(50000);
         }
-    } else {
+    }
+    else
+    {
         kill(pid, SIGSTOP); // stop the child process
 
         int t;
@@ -38,5 +44,6 @@ int main(int argc, char* argv[]) {
         wait(NULL);
     }
 
+    printf("---------------------------------------\n");
     return 0;
 }

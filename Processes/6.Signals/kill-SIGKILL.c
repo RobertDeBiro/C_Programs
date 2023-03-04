@@ -1,6 +1,6 @@
-// Signals
-// - used to control the processes
-// - kill() function, SIGKILL signal
+/*
+ * Killing the process by using kill() function and SIGKILL signal
+ */
 
 #include <stdio.h>
 #include <stdlib.h> // srand, rand
@@ -10,24 +10,27 @@
 #include <signal.h> // kill
 
 int main(int argc, char* argv[]) {
+    printf("***************************************\n");
+
     int pid = fork();
     if (pid == -1) {
         return 1;
     }
 
-    if (pid == 0) {
+    if (pid == 0)
+    {
         while(1) {
             printf("Some text goes here\n");
             usleep(50000); // sleep for 50 ms (50000 us)
         }
-    } else {
+    }
+    else
+    {
         sleep(1); // sleep for 1 s
-        // kill()
-        // - sends the signal
-        // - SIGKILL - kills the process
         kill(pid, SIGKILL); // kill child process
         wait(NULL);
     }
 
+    printf("---------------------------------------\n");
     return 0;
 }
