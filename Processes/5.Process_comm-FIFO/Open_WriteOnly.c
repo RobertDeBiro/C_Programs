@@ -1,6 +1,13 @@
 /*
- * This program will only work if we read from the fifo in another process,
- * for example if we run "cat myfifo1" in the terminal, while code is run inside VS Code
+ * Create FIFO file for one-way communication (one process is in charge for writing to FIFO and other
+ * for reading)
+ *  - when we use WRONLY flag, our FIFO file is opened inside our code for writing, but not for reading
+ *      - in other words, we opened only one side of our pipe, we created only one file descriptor
+ *      - function open() will return file descriptor value only when full pipe is opened i.e. when our
+ *        other pipe end exists
+ *  - in this program, VSCode program will be in charge for writing to FIFO
+ *  - as other process for reading from FIFO we will use "cat" command executed in terminal
+ *  - this program is equivalent to "Process_comm-Pipe/Two_processes-One_way_communication.c" program
  */
 
 #include <stdio.h>

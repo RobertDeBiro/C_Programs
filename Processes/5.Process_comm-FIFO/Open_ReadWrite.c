@@ -1,3 +1,10 @@
+/*
+ * Create FIFO file used for both reading and writing from within VSCode program
+ *  - when we open FIFO file as RDWR, open function returns file descriptor that is able to be used
+ *    both for reading and writing i.e. in functions write() and read()
+ *  - this program is equivalent to "Process_comm-Pipe/One_process.c" program
+ */
+
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h> // mkfifo

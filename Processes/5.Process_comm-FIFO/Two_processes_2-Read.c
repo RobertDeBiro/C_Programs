@@ -1,14 +1,20 @@
-// Use fifo to communicate between processes - process 2
+/*
+ * Two-way communication using two VSCode programms for processes - Read data from FIFO
+ *  - when having RDONLY flag, open() will return the descriptor after FIFO file is also opened in
+ *    other end
+ *  - hence, the program will be stopped on that line until other end is opened
+ */
 
 #include <stdio.h>
 #include <unistd.h>
 #include <fcntl.h> // open
 
 int main(int argc, char* argv[]) {
+    printf("***************************************\n");
+
     int arr[5];
     printf("Opening the sum fifo for reading...\n");
-    // Path to sum when source code is executed from VS Code: FIFOs/sum
-    // Path to sum when source code is executed from terminal (from /bin directory): ../FIFOs/sum
+    // Path is ../FIFOs/sum because this program is run from /bin directory
     int sum_fd_2 = open("../FIFOs/sum", O_RDONLY);
     if (sum_fd_2 == -1) {
         return 1;
@@ -30,5 +36,6 @@ int main(int argc, char* argv[]) {
     }
     printf("Result is %d\n", sum);
 
+    printf("---------------------------------------\n");
     return 0;
 }

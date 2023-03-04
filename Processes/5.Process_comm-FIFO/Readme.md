@@ -7,6 +7,10 @@
  - makes a FIFO special file with name *pathname*
  - *mode* specifies the FIFO's permissions, such as *prwxrwxr-x*
  - a FIFO special file is similar to a pipe, except that it is created in a different way
+   - pipe:
+      - inside our program we must create an array with two elements (file descriptor) and pipe with that array
+   - FIFO:
+      - we only need to create FIFO file, and that can be done either inside our program or inside terminal, hence it is less complicated then pipe
 
 ### Return value
  - on success mkfifo() and mkfifoat() return 0
@@ -20,9 +24,6 @@
     int open(const char *pathname, int flags, mode_t mode);
 
  - opens fifo file specified by the *pathname*
-    - however, it can be oppened only if other process started reading from it
-    - that is because fifo actually replaces a pipe - it is a file that acts like a pipe
-    - since pipe is opened on both ends, the fifo must be also
  - flags:
     - O_RDONLY
     - O_WRONLY

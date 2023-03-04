@@ -1,12 +1,20 @@
-// Use fifo to communicate between processes - process 1
+/*
+ * Two-way communication using two VSCode programms for processes - Write data to FIFO
+ *  - when having WRONLY flag, open() will return the descriptor after FIFO file is also opened in
+ *    other end
+ *  - hence, the program will be stopped on that line until other end is opened
+ */
 
 #include <stdio.h>
 #include <stdlib.h> // srand, rand
+#include <time.h>
 #include <unistd.h>
 #include <fcntl.h> // open
-#include <time.h> /// Use fifo to communicate between processes
 
 int main(int argc, char* argv[]) {
+    printf("***************************************\n");
+
+    // Generate array of five random numbers from 0 to 9
     int arr[5];
     srand(time(NULL));
     int i;
@@ -15,8 +23,7 @@ int main(int argc, char* argv[]) {
     }
 
     printf("Opening the sum fifo for writing...\n");
-    // Path to sum when source code is executed from VS Code: FIFOs/sum
-    // Path to sum when source code is executed from terminal (from /bin directory): ../FIFOs/sum
+    // Path is ../FIFOs/sum because this program is run from /bin directory
     int sum_fd_1 = open("../FIFOs/sum", O_WRONLY);
     if (sum_fd_1 == -1) {
         printf("sum FIFO couldn't be open!\n");
@@ -32,5 +39,6 @@ int main(int argc, char* argv[]) {
     }
     close(sum_fd_1);
 
+    printf("---------------------------------------\n");
     return 0;
 }
