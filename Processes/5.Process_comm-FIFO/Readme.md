@@ -18,6 +18,8 @@
 
 ### References
  - https://man7.org/linux/man-pages/man3/mkfifo.3.html
+ - https://www.youtube.com/watch?v=2hba3etpoJg&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=8
+ - https://www.youtube.com/watch?v=dniz3nEOEjU&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=9
 
 ---------------------------------------------------------------------------
 ## OPEN

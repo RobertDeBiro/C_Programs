@@ -20,6 +20,9 @@
  - https://man7.org/linux/man-pages/man2/kill.2.html
  - https://linuxhint.com/kill-signal-numbers-linux/
  - https://www.gnu.org/software/libc/manual/html_node/Standard-Signals.html
+ - https://www.youtube.com/watch?v=5We_HtLlAbs&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=16
+ - https://www.youtube.com/watch?v=3MZjaZxZYrE&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=17
+ - https://www.youtube.com/watch?v=7ud2iqu9szk&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=18
 
 --------------------------------------------------------------------------------------------------
 ## SIGACTION
@@ -52,3 +55,5 @@
 
 ### References
  - https://man7.org/linux/man-pages/man2/sigaction.2.html
+ - https://www.youtube.com/watch?v=jF-1eFhyz1U&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=19
+ - https://www.youtube.com/watch?v=PErrlOx3LYE&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=20

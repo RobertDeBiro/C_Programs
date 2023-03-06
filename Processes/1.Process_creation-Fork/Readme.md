@@ -12,3 +12,6 @@
 ### References
  - https://man7.org/linux/man-pages/man2/fork.2.html
  - https://www.geeksforgeeks.org/fork-system-call/
+ - https://www.youtube.com/watch?v=cex9XrZCU14&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY
+ - https://www.youtube.com/watch?v=QD9YKSg3wCc&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=3
+ - https://www.youtube.com/watch?v=94URLRsjqMQ&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=5
