@@ -1,4 +1,4 @@
-## SYNTAX
+## MKFIFO
     #include <sys/types.h>
     #include <sys/stat.h>
 
@@ -16,8 +16,11 @@
  - on success mkfifo() and mkfifoat() return 0
  - on error, -1 is returned and errno is set to indicate the error
 
+### References
+ - https://man7.org/linux/man-pages/man3/mkfifo.3.html
+
 ---------------------------------------------------------------------------
-## SYNTAX
+## OPEN
     #include <fcntl.h>
     
     int open(const char *pathname, int flags);
@@ -33,7 +36,5 @@
  - the return value of open() is a file descriptor, a small, nonnegative integer that is an index to an
    entry in the process's table of open file descriptors
 
----------------------------------------------------------------------------
 ### References
- - https://man7.org/linux/man-pages/man3/mkfifo.3.html
  - https://man7.org/linux/man-pages/man2/open.2.html

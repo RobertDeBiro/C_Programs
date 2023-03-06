@@ -1,4 +1,4 @@
-## SYNTAX
+## WAIT
     #include <sys/wait.h>
     
     pid_t wait(int *wstatus)
@@ -9,6 +9,5 @@
  - on success, returns the process ID of the terminated child
  - on failure, -1 is returned
 
---------------------------------------------------------------
 ### References
  - https://man7.org/linux/man-pages/man2/wait.2.html

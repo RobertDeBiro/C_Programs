@@ -1,4 +1,4 @@
-## SYNTAX
+## PIPE
     #include <unistd.h>
     
     int pipe(int pipefd[2])
@@ -9,6 +9,5 @@
  - on success, 0 is returned
  - on error, -1 is returned, errno is set to indicate the error, and pipefd is left unchanged
 
---------------------------------------------------------------
 ### References
  - https://man7.org/linux/man-pages/man2/pipe.2.html

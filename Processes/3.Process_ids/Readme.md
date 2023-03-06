@@ -1,12 +1,11 @@
-## SYNTAX
+## GETPID
     #include <unistd.h>
     
     pid_t getpid(void)
 
  - returns the process ID (PID) of the calling process
 
---------------------------------------------------------------
-## SYNTAX
+## GETPPID
     #include <unistd.h>
     
     pid_t getppid(void)

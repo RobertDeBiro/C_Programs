@@ -1,4 +1,7 @@
-// - this example must be run from terminal
+/*
+ * Sending SIGUSR1 signal from child to parent process
+ *  - program must be executed from terminal
+ */
 
 #include <stdio.h>
 #include <unistd.h> // fork()
@@ -16,10 +19,20 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    if (pid == 0) {
-        sleep(5);
+    if (pid == 0)
+    {
+        // Wait 3 seconds for the user to write an answer
+        //  - if he don't do that, send signal to parent process with HINT how to do it
+        sleep(3);
+
+        // Sending SIGUSR1 signal to the parent process
+        //  - SIGUSR1 is set aside for user to use it any way he wants
+        //  - in this example basically we are just sending that signal to parent process as an
+        //    indication for parent process to do something
         kill(getppid(), SIGUSR1);
-    } else {
+    }
+    else
+    {
         struct sigaction sa;
         sa.sa_flags = SA_RESTART;
         sa.sa_handler = &handle_sigusr1;
@@ -30,9 +43,9 @@ int main(int argc, char* argv[]) {
         printf("What is the result of 3 x 5: ");
         scanf("%d", &x);
         if (x == 15) {
-            printf("Right!");
+            printf("Right!\n");
         } else {
-            printf("Wrong!");
+            printf("Wrong!\n");
         }
         wait(NULL);
     }
