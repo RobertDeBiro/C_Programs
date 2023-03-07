@@ -15,3 +15,7 @@
  - https://www.youtube.com/watch?v=cex9XrZCU14&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY
  - https://www.youtube.com/watch?v=QD9YKSg3wCc&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=3
  - https://www.youtube.com/watch?v=94URLRsjqMQ&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=5
+
+ - System call:
+    - https://www.geeksforgeeks.org/introduction-of-system-call/
+    - https://www.youtube.com/watch?v=lhToWeuWWfw

@@ -1,5 +1,8 @@
-// Threads are running under the same process and
-// share the same memory, i.e. have the same variables
+/*
+ * Main difference:
+ *  - threads are running under the same process and share the same memory, i.e. have the same variables
+ *  - processes have their own memory
+ */
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -8,6 +11,7 @@
 
 int x = 2;
 
+// At the end both process will print "x = 7", since they share it
 void* routine1() {
     printf("Process id of the routine1 thread: %d\n", getpid());
     x += 5;
@@ -22,6 +26,7 @@ void* routine2() {
 }
 
 int main(int argc, char* argv[]) {
+    printf("************************************************\n");
     pthread_t t1, t2;
 
     if (pthread_create(&t1, NULL, &routine1, NULL) != 0) {
@@ -42,5 +47,6 @@ int main(int argc, char* argv[]) {
         return 4;
     }
 
+    printf("--------------------------------------------\n");
     return 0;
 }

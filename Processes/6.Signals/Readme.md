@@ -54,6 +54,7 @@
         - specifies a set od flags which modify the behavior of the signal
 
 ### References
+ - https://man7.org/linux/man-pages/man7/signal.7.html
  - https://man7.org/linux/man-pages/man2/sigaction.2.html
  - https://www.youtube.com/watch?v=jF-1eFhyz1U&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=19
  - https://www.youtube.com/watch?v=PErrlOx3LYE&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=20

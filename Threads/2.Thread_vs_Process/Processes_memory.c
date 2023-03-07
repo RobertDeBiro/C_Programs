@@ -1,5 +1,3 @@
-// Every process has its own memory, i.e. its own variables
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h> // sleep
@@ -7,6 +5,8 @@
 #include <sys/types.h>
 
 int main(int argc, char* argv[]) {
+    printf("************************************************\n");
+
     int x = 2;
     int pid = fork();
     if (pid == -1) {
@@ -24,5 +24,6 @@ int main(int argc, char* argv[]) {
         wait(NULL);
     }
 
+    printf("--------------------------------------------\n");
     return 0;
 }
