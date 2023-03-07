@@ -1,6 +1,4 @@
-// Using mutex
-//  - mutex variable is used when several threads can change some global variable
-//  - this example shows concurrency 
+// This example shows concurrency 
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -26,12 +24,11 @@ void* routine() {
 }
 
 int main(int argc, char* argv[]) {
+    printf("************************************************\n");
+
     pthread_t t1, t2, t3, t4;
 
     // Initialize mutex
-    //   pthread_mutex_init( <pointer to mutex_variable>
-    //                       <custom_attributes> )
-    // - if we pass NULL as custom attributes, everything is set to default
     pthread_mutex_init(&mutex, NULL);
 
     if (pthread_create(&t1, NULL, &routine, NULL) != 0) {
@@ -74,5 +71,6 @@ int main(int argc, char* argv[]) {
 
     printf("Number of mails: %d\n", mails);
 
+    printf("-----------------------------------------\n");
     return 0;
 }

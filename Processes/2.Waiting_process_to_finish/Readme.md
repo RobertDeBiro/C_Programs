@@ -1,4 +1,4 @@
-## WAIT
+## wait
     #include <sys/wait.h>
     
     pid_t wait(int *wstatus)

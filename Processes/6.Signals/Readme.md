@@ -1,4 +1,4 @@
-## KILL
+## kill
     #include <signal.h>
     
     int kill(pid_t pid, int sig)
@@ -25,7 +25,7 @@
  - https://www.youtube.com/watch?v=7ud2iqu9szk&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=18
 
 --------------------------------------------------------------------------------------------------
-## SIGACTION
+## sigaction
     #include <signal.h>
 
     int sigaction(int signum, const struct sigaction *restrict act,  

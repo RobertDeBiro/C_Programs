@@ -1,11 +1,11 @@
-## GETPID
+## getpid
     #include <unistd.h>
     
     pid_t getpid(void)
 
  - returns the process ID (PID) of the calling process
 
-## GETPPID
+## getppid
     #include <unistd.h>
     
     pid_t getppid(void)

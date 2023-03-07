@@ -1,4 +1,4 @@
-## MKFIFO
+## mkfifo
     #include <sys/types.h>
     #include <sys/stat.h>
 
@@ -22,7 +22,7 @@
  - https://www.youtube.com/watch?v=dniz3nEOEjU&list=PLfqABt5AS4FkW5mOn2Tn9ZZLLDwA3kZUY&index=9
 
 ---------------------------------------------------------------------------
-## OPEN
+## open
     #include <fcntl.h>
     
     int open(const char *pathname, int flags);

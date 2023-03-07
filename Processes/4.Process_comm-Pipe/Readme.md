@@ -1,4 +1,4 @@
-## PIPE
+## pipe
     #include <unistd.h>
     
     int pipe(int pipefd[2])

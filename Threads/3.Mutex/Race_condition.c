@@ -1,5 +1,9 @@
-// Due to race condition, at the end it won't be 2 000 000 mails, but rather some number
-// between 1 and 2 milion
+/*
+ * Due to race condition, at the end it won't be 2 000 000 mails, but rather some number
+ * between 1 and 2 milion
+ *  - it can happen that both threads read mails variable at the same time, hence the both will inrease
+ *    by one the same value, and there we will have a loss of one value
+ */
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -18,6 +22,8 @@ void* routine() {
 }
 
 int main(int argc, char* argv[]) {
+    printf("************************************************\n");
+
     pthread_t t1, t2;
 
     if (pthread_create(&t1, NULL, &routine, NULL) != 0) {
@@ -40,5 +46,6 @@ int main(int argc, char* argv[]) {
 
     printf("Number of mails: %d\n", mails);
 
+    printf("--------------------------------------------\n");
     return 0;
 }
