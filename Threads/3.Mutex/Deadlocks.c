@@ -1,4 +1,6 @@
-// Deadlock - programs execution stucked due to locked mutexes
+/*
+ * Deadlock - programs execution stucked due to locked mutexes
+ */
 
 #include <stdlib.h> // srand, rand
 #include <stdio.h>
@@ -9,9 +11,14 @@
 
 pthread_mutex_t mutexFuel;
 int fuel = 50;
+
 pthread_mutex_t mutexWater;
 int water = 10;
 
+// One thread will lock fuel, wait for one second and try to lock water
+// In the meantime, during that one second, other thread should lock water, wait for one second and
+// try to lock fuel
+//  - both threads will wait for each other infinite amount of time -> deadlock
 void* routine(void *args) {
     if(rand() % 2 == 0) {
         pthread_mutex_lock(&mutexFuel);

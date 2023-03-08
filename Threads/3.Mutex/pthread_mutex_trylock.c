@@ -6,8 +6,8 @@ pthread_mutex_t mutex;
 
 void* routine(void* arg) {
     if (pthread_mutex_trylock(&mutex) == 0) {
-        printf("Got lock\n");
         sleep(1);
+        printf("Got lock\n");
         pthread_mutex_unlock(&mutex);
     } else {
         printf("Didn't get lock\n");
