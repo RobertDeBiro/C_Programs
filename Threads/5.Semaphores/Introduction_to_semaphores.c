@@ -1,4 +1,8 @@
-// Semaphore locks the code for arbitrary amount of threads (depending on semaphore initial value)
+/*
+ * Locking the code with semaphore
+ *  - since in this example we are increasing the value of semaphore every iteration, we are actually not
+ *    showing how exactly semaphore is used in practice
+ */
 
 #include <stdlib.h> // srand, rand
 #include <stdio.h>
@@ -21,11 +25,11 @@ void* routine(void *args) {
 }
 
 int main(int argc, char *argv[]) {
+    printf("************************************************\n");
+
     pthread_t th[THREAD_NUM];
+
     // Initialize semaphore:
-    // sem_init( <semaphore address>,
-    //           <number of processes>,
-    //           <initial value> ) 
     sem_init(&semaphore, 0, 2);
 
     int i;
@@ -44,5 +48,6 @@ int main(int argc, char *argv[]) {
 
     sem_destroy(&semaphore);
 
+    printf("--------------------------------------------\n");
     return 0;
 }
