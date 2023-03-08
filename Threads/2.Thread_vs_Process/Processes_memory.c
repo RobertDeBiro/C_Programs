@@ -4,10 +4,11 @@
 #include <sys/wait.h> // wait
 #include <sys/types.h>
 
+int x = 2;
+
 int main(int argc, char* argv[]) {
     printf("************************************************\n");
 
-    int x = 2;
     int pid = fork();
     if (pid == -1) {
         return 1;
