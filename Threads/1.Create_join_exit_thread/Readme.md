@@ -51,3 +51,20 @@
 ### References
  - https://man7.org/linux/man-pages/man3/pthread_join.3.html
  - https://www.youtube.com/watch?v=ln3el6PR__Q&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2&index=6
+
+-----------------------------------------------------------------------------------
+## pthread_exit
+
+    #include <pthread.h>
+
+    noreturn void pthread_exit(void *retval);
+
+ -  terminates the calling thread and returns a value via *retval* that (if the thread is joinable) is
+    available to another thread in the same process that calls *pthread_join(3)*
+
+### Return value
+ - this function does not return to the caller
+
+### References
+ - https://man7.org/linux/man-pages/man3/pthread_exit.3.html
+ - https://www.youtube.com/watch?v=w_8bFrHUK5Q&list=PLfqABt5AS4FmuQf70psXrsMLEDQXNkLq2&index=13
