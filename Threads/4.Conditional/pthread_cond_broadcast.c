@@ -1,6 +1,6 @@
-// Condition broadcast
-// Condition broadcast sends signal to every thread that is waiting for the signal
-// whereas condition signal sends it only to one
+/*
+ * Sending signal to every thread that is waiting for the signal by using condition broadcast
+ */ 
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -37,6 +37,8 @@ void* car(void* arg) {
 }
 
 int main(int argc, char* argv[]) {
+    printf("************************************************\n");
+
     pthread_t th[5];
     pthread_mutex_init(&mutexFuel, NULL);
     pthread_cond_init(&condFuel, NULL);
@@ -61,5 +63,6 @@ int main(int argc, char* argv[]) {
     pthread_mutex_destroy(&mutexFuel);
     pthread_cond_destroy(&condFuel);
 
+    printf("--------------------------------------------\n");
     return 0;
 }

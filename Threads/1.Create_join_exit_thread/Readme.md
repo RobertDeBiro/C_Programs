@@ -31,7 +31,6 @@
 
 -----------------------------------------------------------------------------------
 ## pthread_join
-
     #include <pthread.h>
 
     int pthread_join(pthread_t thread, void **retval);

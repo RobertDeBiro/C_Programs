@@ -22,8 +22,6 @@ void* car(void* arg) {
     pthread_mutex_lock(&mutexFuel);
     while(fuel < 40) {
         printf("No fuel. Waiting...\n");
-        // pthread_cond_wait( <pointer to conditional variable>, 
-        //                    <pointer to mutex variable> )
         // Procedure when pthread_cond_wait() is called:
         //  1. Unlock the mutex
         //  2. Wait for the signal
@@ -36,6 +34,8 @@ void* car(void* arg) {
 }
 
 int main(int argc, char* argv[]) {
+    printf("************************************************\n");
+
     pthread_t th[2];
     pthread_mutex_init(&mutexFuel, NULL);
     pthread_cond_init(&condFuel, NULL);
@@ -60,5 +60,6 @@ int main(int argc, char* argv[]) {
     pthread_mutex_destroy(&mutexFuel);
     pthread_cond_destroy(&condFuel);
 
+    printf("--------------------------------------------\n");
     return 0;
 }

@@ -27,7 +27,6 @@
 
 ------------------------------------------------------------------------------------------------
 ## pthread_mutex_lock, pthread_mutex_trylock, pthread_mutex_unlock
-
     #include <pthread.h>
 
     int pthread_mutex_lock(pthread_mutex_t *mutex);
