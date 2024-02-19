@@ -1,8 +1,8 @@
 /*
  * Two process communication by using one pipe
- *  - by using one pipe we can define that communication between processes goes in only one direction
- *  - in this example child process write data to pipe, and parent process read that data from pipe
- *    i.e. we are sending data from child process to parent process
+   - by using one pipe we can define that communication between processes goes in only one direction
+   - in this example child process write data to pipe, and parent process read that data from pipe
+     i.e. we are sending data from child process to parent process
  */
 
 #include <stdio.h>
@@ -11,10 +11,10 @@
 int main(int argc, char* argv[]) {
     printf("***************************************\n");
 
-    int fd[2]; // This is normal integer array
-    // After fd is send to pipe() its elements become file descriptors
-    //  - fd[0] is always for reading from pipe
-    //  - fd[1] is always for writting to pipe
+    // This is normal integer array
+    // - after 'fd' is send to 'pipe()' its elements become file descriptors
+    int fd[2];
+
     if (pipe(fd) == -1) {
         printf("An error ocurred with opening the pipe");
         return 1;
@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
         scanf("%d", &x);
         // Read something from a variable and after 3 seconds write that to the pipe
         sleep(3);
-        // Write command doesn't have to wait that read command is executed in another process
+        // 'write' command doesn't have to wait that 'read' command is executed in another process
         if (write(fd[1], &x, sizeof(x)) == -1) {
             printf("An error occured with writing to the pipe\n");
             return 3;
@@ -50,8 +50,8 @@ int main(int argc, char* argv[]) {
 
         int y;
         // Read something from the pipe and write that to a variable
-        //  - read command waits that actually something is written to the fd[0]
-        //  - hence, in this example it would wait for 3 s
+        //  - 'read' command waits that actually something is written to the 'fd[0]'
+        //  - hence, in this example it would wait for 3 seconds
         if (read(fd[0], &y, sizeof(y)) == -1) {
             printf("An error occured with reading from the pipe\n");
             return 4;

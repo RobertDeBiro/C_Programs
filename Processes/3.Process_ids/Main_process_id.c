@@ -1,8 +1,8 @@
-// Terminating parent process before child
+//* Terminating parent process before child
 //  - when parent process is terminated before child process, child process won't be left
-//    without of parent process, but rather initial process in Linux (with id = 1) will be
+//    without of parent process, but rather initial process in Linux (with 'id = 1') will be
 //    assigned to that child as its new parent
-//  - that is because that initial process is actually first process started in the Linux
+//  - that is because the initial process is actually first process started in the Linux
 //    and it is parent for every process
 
 #include <stdio.h>

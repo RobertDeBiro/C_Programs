@@ -1,8 +1,10 @@
 /*
- * Create FIFO file used for both reading and writing from within VSCode program
- *  - when we open FIFO file as RDWR, open function returns file descriptor that is able to be used
- *    both for reading and writing i.e. in functions write() and read()
- *  - this program is equivalent to "Process_comm-Pipe/One_process.c" program
+ * Create FIFO file for two-way communication
+   - one process will be in charge both for reading and writing to FIFO file
+     - in this example our "Open_ReadWrite.c" program will write and read FIFO file
+   - when we open FIFO file as 'RDWR', open function returns file descriptor that is able to be used
+     both for reading and writing i.e. in functions 'write()' and 'read()'
+   - this program is equivalent to "Process_comm-Pipe/One_process.c" program
  */
 
 #include <stdio.h>
@@ -25,7 +27,7 @@ int main(int argc, char* argv[]) {
     printf("Opening...\n");
 
     // Open file and read and write to it
-    //  - O_RDWR - Open_ReadWrite
+    //  - 'O_RDWR' - Open_ReadWrite
     int fd = open("FIFOs/myfifo1", O_RDWR);
     if (fd == -1) {
         printf("Couldn't open the fifo file!\n");
@@ -34,7 +36,7 @@ int main(int argc, char* argv[]) {
 
     printf("Opened\n");
 
-    int x = 97; // x will be written as ASCII code "a"
+    int x = 97; // 'x' will be written as ASCII code 'a'
     if (write(fd, &x, sizeof(x)) == -1) {
         printf("Could not write into fifo file\n");
         return 3;

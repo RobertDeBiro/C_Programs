@@ -1,5 +1,5 @@
 /*
- * Killing the process by using kill() function and SIGKILL signal
+ * Killing the process by using 'kill()' function and 'SIGKILL' signal
  */
 
 #include <stdio.h>
@@ -28,7 +28,8 @@ int main(int argc, char* argv[]) {
     {
         sleep(1); // sleep for 1 s
         kill(pid, SIGKILL); // kill child process
-        wait(NULL);
+        wait(NULL); // waiting for child process to be killed
+        printf("Child process killed!\n");
     }
 
     printf("---------------------------------------\n");

@@ -1,8 +1,15 @@
 /*
  * Two-way communication using two VSCode programms for processes - Write data to FIFO
- *  - when having WRONLY flag, open() will return the descriptor after FIFO file is also opened in
- *    other end
- *  - hence, the program will be stopped on that line until other end is opened
+   - when having 'WRONLY' flag, 'open()' will return the descriptor after FIFO file is also opened in
+     other end
+   - hence, the program will be stopped on that line until other end is opened
+   - this program should be executed from terminal, in pair with "Two_processes_2-Read.c"
+   - execution steps:
+     1. Create "sum" FIFO file in "FIFOs" dir by running:
+       - 'mkfifo sum'
+       - 'chmod 777 sum'
+     2. Go to first terminal to "bin" directory and execute './Two_processes_1-Write'
+     3. Go to second terminal to "bin" directory and execute './Two_processes_2-Read'
  */
 
 #include <stdio.h>
@@ -23,7 +30,7 @@ int main(int argc, char* argv[]) {
     }
 
     printf("Opening the sum fifo for writing...\n");
-    // Path is ../FIFOs/sum because this program is run from /bin directory
+    // Path is "../FIFOs/sum" because this program is run from "/bin" directory
     int sum_fd_1 = open("../FIFOs/sum", O_WRONLY);
     if (sum_fd_1 == -1) {
         printf("sum FIFO couldn't be open!\n");

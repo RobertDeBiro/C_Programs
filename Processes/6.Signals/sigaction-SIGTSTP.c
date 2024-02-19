@@ -1,12 +1,12 @@
 /*
- * Handle SIGTSTP signal (signal that put process to background)
- *  - disable possibility that process is put to background
- *  - if we try to put programm in backround via Ctrl+z, our sigaction() function will fetch that
- *    signal and instead call handle_sigtstp() function
- *  - SIGTSTP
- *      - signal that is called when putting process to background
- *      - differs from SIGSTOP
- *  - program must be executed from terminal
+ * Handle SIGTSTP signal
+   - 'SIGTSTP'
+     - signal that is called when putting process to background
+     - differs from 'SIGSTOP'
+   - disable possibility that process is put to background
+   - if we try to put program in backround via 'Ctrl+z', our 'sigaction()' function will fetch that
+     signal and instead call 'handle_sigtstp()' function
+   - program must be executed from terminal
  */
 
 #include <stdlib.h>

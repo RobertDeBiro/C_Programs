@@ -1,11 +1,11 @@
 /*
  * Final schedule of the processes:
- *
- *              O Parent
- *            / |
- *           /  O X
- *          /   |
- *       Z O    O Y
+ 
+               O Parent
+             / |
+            /  O x
+           /   |
+        z O    O y
  */
 
 #include <stdio.h>
@@ -17,16 +17,16 @@ int main(int argc, char* argv[]) {
     
     int id1 = fork();
     int id2 = fork();
-    if (id1 == 0) {
-        if (id2 == 0) {
+    if (id1 == 0) { // x process
+        if (id2 == 0) { // y process
             printf("We are process y with ID = %d\n", getpid());
         } else {
             printf("We are process x with ID = %d\n", getpid());
         }
     } else {
-        if(id2 == 0) {
+        if(id2 == 0) { // z process
             printf("We are process z with ID = %d\n", getpid());
-        } else {
+        } else { // parent process
             printf("We are the parrent process with ID = %d\n", getpid());
         }
     }

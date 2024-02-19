@@ -1,6 +1,6 @@
 /*
- * Sending SIGUSR1 signal from child to parent process
- *  - program must be executed from terminal
+ * Sending 'SIGUSR1' signal from child to parent process
+   - program must be executed from terminal
  */
 
 #include <stdio.h>
@@ -22,13 +22,13 @@ int main(int argc, char* argv[]) {
     if (pid == 0)
     {
         // Wait 3 seconds for the user to write an answer
-        //  - if he don't do that, send signal to parent process with HINT how to do it
+        //  - if he doesn't do that, send signal to parent process with HINT how to do it
         sleep(3);
 
-        // Sending SIGUSR1 signal to the parent process
-        //  - SIGUSR1 is set aside for user to use it any way he wants
-        //  - in this example basically we are just sending that signal to parent process as an
-        //    indication for parent process to do something
+        // Sending 'SIGUSR1' signal to the parent process
+        //  - 'SIGUSR1' is set aside for user to use it any way he wants
+        //  - the purpose of this child process is only to monitor the time of process execution
+        //    and to send some helpful notes if some time is passed
         kill(getppid(), SIGUSR1);
     }
     else
@@ -47,7 +47,6 @@ int main(int argc, char* argv[]) {
         } else {
             printf("Wrong!\n");
         }
-        wait(NULL);
     }
 
     return 0;

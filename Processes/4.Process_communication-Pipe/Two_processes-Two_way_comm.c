@@ -1,9 +1,9 @@
 /*
  * Two processes communication by using two pipes
- *  - if we want that our processes communication goes in two directions it is the best to use two pipes
- *  - with two pipes both processes can read and write the data i.e. we have two way communication
- *  - when one process writes and reads from the same pipe, it can happen that it will do it
- *    before other process could write to that pipe, so behavior will be unproper
+   - if we want that our processes communication goes in two directions it is the best to use two pipes
+   - with two pipes both processes can read and write the data i.e. we have two way communication
+   - when one process writes and reads from the same pipe, it can happen that it will do it
+     before other process could write to that pipe, so behavior will be unproper
  */ 
 
 #include <stdlib.h>

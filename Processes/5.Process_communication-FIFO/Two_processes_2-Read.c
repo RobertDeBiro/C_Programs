@@ -1,8 +1,9 @@
 /*
  * Two-way communication using two VSCode programms for processes - Read data from FIFO
- *  - when having RDONLY flag, open() will return the descriptor after FIFO file is also opened in
- *    other end
- *  - hence, the program will be stopped on that line until other end is opened
+   - when having 'RDONLY' flag, 'open()' will return the descriptor after FIFO file is
+     also opened in other end
+   - hence, the program will be stopped on that line until other end is opened
+   - this program should be executed from terminal, in pair with "Two_processes_2-Write.c"
  */
 
 #include <stdio.h>
@@ -14,7 +15,7 @@ int main(int argc, char* argv[]) {
 
     int arr[5];
     printf("Opening the sum fifo for reading...\n");
-    // Path is ../FIFOs/sum because this program is run from /bin directory
+    // Path is "../FIFOs/sum" because this program is run from "/bin" directory
     int sum_fd_2 = open("../FIFOs/sum", O_RDONLY);
     if (sum_fd_2 == -1) {
         return 1;

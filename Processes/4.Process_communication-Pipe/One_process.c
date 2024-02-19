@@ -1,6 +1,5 @@
 /*
- * Pipe doesn't know how many process are there - it only defines which element is for writting
- * and which for reading
+ * Sending data within one process by using pipe
  */
 
 #include <stdio.h>
@@ -23,6 +22,8 @@ int main(int argc, char* argv[]) {
         return 3;
     }
 
+    printf("Executing anything in order to show that 'read' will be valid...\n");
+
     int y;
     if (read(fd[0], &y, sizeof(y)) == -1) {
         printf("An error occured with reading from the pipe\n");
@@ -31,7 +32,7 @@ int main(int argc, char* argv[]) {
     y = y * 3;
     printf("Got from child process %d\n", y);
 
-    // If we not close the descriptor, it will be everything fine in this program, but it is a good
+    // If we don't close the descriptor, it will be everything fine in this program, but it is a good
     // practice to close it because in other programs it may be needed
     close (fd[0]);
     close (fd[1]);

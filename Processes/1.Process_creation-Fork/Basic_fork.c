@@ -5,7 +5,7 @@ int main(int argc, char* argv[])
 {
     printf("************************************************\n");
 
-    // If fork() returned 0, means that we are in child process
+    // If 'fork()' returned 0, means that we are in child process
     //  - but, 0 is not a child process id, it is only an indicator that we are currently
     //    in the child process
     int id = fork();

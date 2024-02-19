@@ -5,7 +5,7 @@ int main(int argc, char* argv[])
 {
     printf("************************************************\n");
 
-    // Calling fork() from particular process
+    // Calling 'fork()' from particular process
     // - that is how we can have odd number of processes
     int id = fork();
     if (id != 0) {
