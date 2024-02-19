@@ -5,9 +5,9 @@
 int prime[10] = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 
 void* routine(void* arg) {
-    // Cast arg to int* and dereference it
+    // Cast 'arg' to 'int*' and dereference it
     int index = *(int*)arg;
-    printf("%d. Thread\n", index);
+    printf("%d. Thread\t", index);
     printf("%d \n", prime[index]);
     free(arg);
 }

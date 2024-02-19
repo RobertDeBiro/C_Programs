@@ -13,7 +13,7 @@ void* routine() {
 int main(int argc, char* argv[]) {
     printf("************************************************\n");
 
-    // Create pthread_t variables in which API will store info about the threads
+    // Create 'pthread_t' variables in which API will store info about the threads
     pthread_t t1, t2;
 
     // Create threads
