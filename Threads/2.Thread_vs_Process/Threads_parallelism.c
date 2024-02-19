@@ -1,7 +1,7 @@
 /*
  * Use two threads to produce result faster
- *  - this example shows ow threads can cooperate in parallel in order to make execution faster
- *  - here we can see parallelism
+   - this example shows how threads can cooperate in parallel in order to make execution faster
+   - here we can see parallelism
  */
 
 #include <stdlib.h>
@@ -12,7 +12,6 @@ int primes[10] = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 
 void* routine(void* arg) {
     int index = *(int*)arg;
-    // Have in mind that threads share only global variables
     int sum = 0;
     for(int j = 0; j < 5; j++) {
         sum += primes[index + j];

@@ -1,9 +1,3 @@
-/*
- * Main difference:
- *  - threads are running under the same process and share the same memory, i.e. have the same variables
- *  - processes have their own memory
- */
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h> // sleep
@@ -11,11 +5,10 @@
 
 int x = 2;
 
-// At the end both process will print "x = 7", since they share it
+// At the end both process will print 'x = 7', since they share it
 void* routine1() {
     printf("Process id of the routine1 thread: %d\n", getpid());
     x += 5;
-    sleep(2);
     printf("Value of x: %d\n", x);
 }
 

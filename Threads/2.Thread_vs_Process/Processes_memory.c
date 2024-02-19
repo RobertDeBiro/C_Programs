@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
     if (pid == -1) {
         return 1;
     }
-    printf("Process id from one of the process: %d\n", getpid());
+    printf("Process id from one of the processes: %d\n", getpid());
 
     if (pid == 0) {
         x++;
