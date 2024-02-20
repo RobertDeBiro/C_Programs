@@ -6,19 +6,19 @@
 
 int mails = 0;
 
-// Create mutex variable
+//* Create 'mutex' variable
 pthread_mutex_t mutex;
 
 void* routine() {
     for (int i = 0; i < 10000000; i++) {
-        // Lock the mutex - Protect the code
-        //  - when other thread encounters this line, it cannot lock the mutex
-        //    since it is already locked, so it waits until mutex is unlocked
+        //* Lock the 'mutex' - protect the code
+        //  - when other thread encounters this line, it cannot lock the 'mutex'
+        //    since it is already locked, so it waits until 'mutex' is unlocked
         pthread_mutex_lock(&mutex);
         
         mails++;
 
-        // Unlock the mutex - Unprotect the code
+        // Unlock the 'mutex' - unprotect the code
         pthread_mutex_unlock(&mutex);
     }
 }
@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
 
     pthread_t t1, t2, t3, t4;
 
-    // Initialize mutex
+    //* Initialize 'mutex'
     pthread_mutex_init(&mutex, NULL);
 
     if (pthread_create(&t1, NULL, &routine, NULL) != 0) {

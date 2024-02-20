@@ -1,7 +1,7 @@
 /*
- * Manipulate stoveFuel object by using 10 threads and pthread_mutex_trylock
- *  - chefs = threads
- *  - stove = shared data (+mutex)
+ * Manipulate 'stoveFuel' object by using 10 threads and 'pthread_mutex_trylock'
+   - chefs = threads
+   - stove = shared data (+mutex)
  */
 
 #include <stdio.h>
@@ -13,9 +13,38 @@
 pthread_mutex_t stoveMutex[4];
 int stoveFuel[4] = { 100, 100, 100, 100 };
 
+
+//* Execution flow:
+/*
+  - 0.thread
+    - locks stoveMutex[0]
+  - 1.thread
+    - tries to lock stoveMutex[0] - locked by 0.thread
+    - locks stoveMutex[1]
+  - 2.thread
+    - tries to lock stoveMutex[0] - locked by 0.thread
+    - tries to lock stoveMutex[1] - locked by 1.thread
+    - locks stoveMutex[2]
+  - 3.thread
+    - tries to lock stoveMutex[0] - locked by 0.thread
+    - tries to lock stoveMutex[1] - locked by 1.thread
+    - tries to lock stoveMutex[2] - locked by 2.thread
+    - locks stoveMutex[3]
+  - 4.thread
+    - loop until some of the 'stoveMutex' elements is unlocked:
+      - tries to lock stoveMutex[0] - locked by 0.thread
+      - tries to lock stoveMutex[1] - locked by 1.thread
+      - tries to lock stoveMutex[2] - locked by 2.thread
+      - tries to lock stoveMutex[3] - locked by 3.thread
+      - prints: "No stove available yet, waiting..."
+      - since 'i' becomes equal to '-1' thread still stays in 'for' loop,
+        'i++' is executed and 'i' becomes equal to '0'
+    -> in this example 'stoveMutex[0]' will be unlocked in the meantime and this thread will lock it
+  - 5. thread ...
+ */
+
 void* routine(void* arg) {
-    // Cast arg to int* and dereference it
-    int thread_n = *(int*)arg;
+    int thread_n = *(int*)arg; // cast 'arg' to 'int*' and dereference it
     int i;
     for (i = 0; i < 4; i++) {
         if (pthread_mutex_trylock(&stoveMutex[i]) == 0) {

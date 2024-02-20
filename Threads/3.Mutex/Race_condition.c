@@ -1,8 +1,9 @@
 /*
- * Due to race condition, at the end it won't be 2 000 000 mails, but rather some number
- * between 1 and 2 milion
- *  - it can happen that both threads read mails variable at the same time, hence the both will inrease
- *    by one the same value, and there we will have a loss of one value
+ * Race condition
+   - due to race condition, at the end it won't be 2 000 000 mails, but rather some number
+     between 1 and 2 milion
+   - it can happen that both threads read 'mails' variable at the same time, hence the both will increase
+     by one the same value, and eventually write same value into 'mails', leading to loss of one value
  */
 
 #include <stdlib.h>
@@ -14,9 +15,9 @@ int mails = 0;
 void* routine() {
     for (int i = 0; i < 1000000; i++) {
         // Processor steps when increasing mails (can be confirmed in assembly code):
-        //  1) Read mails
-        //  2) Increment mails
-        //  3) Write mails
+        //  1) Read 'mails'
+        //  2) Increment 'mails'
+        //  3) Write 'mails'
         mails++;
     }
 }

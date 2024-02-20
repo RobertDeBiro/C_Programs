@@ -7,14 +7,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <pthread.h> // pthread
+#include <unistd.h> // sleep
 
 int primes[10] = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
 
+// Every thread starts its own routine with its own local parameters,
+// whereas global parameters are shared
 void* routine(void* arg) {
     int index = *(int*)arg;
     int sum = 0;
     for(int j = 0; j < 5; j++) {
         sum += primes[index + j];
+        printf("Number added: %d\n", primes[index + j]);
+        printf("Current sum: %d\n", sum);
+        sleep(1);
     }
     printf("Local sum: %d\n", sum);
     *(int*)arg = sum;

@@ -1,5 +1,8 @@
-// Create and join threads by using for loop
-// - example is the same as in mutex.c, but with for loop when creating and joining threads
+/*
+ * Create and join threads by using for loop
+   - example is the same as in "pthread_mutex_init_destroy.c",
+     but with for loop when creating and joining threads
+ */
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -19,7 +22,7 @@ void* routine() {
 int main(int argc, char* argv[]) {
     printf("************************************************\n");
 
-    pthread_t th[4]; // pthread_t can also be an array
+    pthread_t th[4]; // 'pthread_t' can also be an array
     int i;
     pthread_mutex_init(&mutex, NULL);
 

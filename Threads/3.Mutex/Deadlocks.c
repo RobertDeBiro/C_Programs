@@ -1,5 +1,5 @@
 /*
- * Deadlock - programs execution stucked due to locked mutexes
+ * Deadlock - programs execution stuckes due to locked mutexes
  */
 
 #include <stdlib.h> // srand, rand
@@ -15,17 +15,19 @@ int fuel = 50;
 pthread_mutex_t mutexWater;
 int water = 10;
 
-// One thread will lock fuel, wait for one second and try to lock water
-// In the meantime, during that one second, other thread should lock water, wait for one second and
-// try to lock fuel
-//  - both threads will wait for each other infinite amount of time -> deadlock
+// One thread will lock 'fuel/water' and wait for 1 second, whereas in the meantime
+// some other thread may lock 'water/fuel' and wait for 1 second
+//  - ultimately, both threads will try to lock already locked mutexes
+//  - since that will not be possible, they will infinitely wait for them to be unlocked
 void* routine(void *args) {
     if(rand() % 2 == 0) {
         pthread_mutex_lock(&mutexFuel);
+        printf("Fuel LOCKED!\n");
         sleep(1);
         pthread_mutex_lock(&mutexWater);
     } else {
         pthread_mutex_lock(&mutexWater);
+        printf("Water LOCKED!\n");
         sleep(1);
         pthread_mutex_lock(&mutexFuel);
     }
@@ -46,7 +48,7 @@ int main(int argc, char *argv[]) {
             perror("Failed to create thread!\n");
         }
     }
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < THREAD_NUM; i++) {
         if (pthread_join(th[i], NULL) != 0) {
             perror("Failed to join thread!\n");
         }
