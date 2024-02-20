@@ -1,3 +1,13 @@
+/*
+ * Conditional variable
+   - used when "first thread" locks mutex and decides to unlock it in order to
+     be locked by "second thread" until that thread executes some condition
+   - after that condition is executed "second thread" should signal "first thread"
+     condition variable with 'pthread_cond_signal()' to inform it that
+     condition is executed and that it can lock mutex again and continue doing
+     actions that it previously stopped
+ */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h> // sleep
@@ -7,6 +17,7 @@ pthread_mutex_t mutexFuel;
 pthread_cond_t condFuel; // Create conditional variable
 int fuel = 0;
 
+// Condition - fill fuel
 void* fuel_filling(void* arg) {
     for (int i = 0; i < 5; i++) {
         pthread_mutex_lock(&mutexFuel);
@@ -22,7 +33,7 @@ void* car(void* arg) {
     pthread_mutex_lock(&mutexFuel);
     while(fuel < 40) {
         printf("No fuel. Waiting...\n");
-        // Procedure when pthread_cond_wait() is called:
+        //* Procedure when 'pthread_cond_wait()' is called:
         //  1. Unlock the mutex
         //  2. Wait for the signal
         //  3. Lock the mutex
@@ -42,11 +53,11 @@ int main(int argc, char* argv[]) {
 
     for (int i = 0; i < 2; i++) {
         if (i == 1) {
-            if (pthread_create(&th[i], NULL, &fuel_filling, NULL) != 0) {
+            if (pthread_create(&th[i], NULL, &fuel_filling, NULL) != 0) { // Executed second
                 perror("Failed to create thread!\n");
             }
         } else {
-            if (pthread_create(&th[i], NULL, &car, NULL) != 0) {
+            if (pthread_create(&th[i], NULL, &car, NULL) != 0) { // Executed first
                 perror("Failed to create thread!\n");
             }
         }

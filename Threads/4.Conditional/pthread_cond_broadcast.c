@@ -17,8 +17,8 @@ void* fuel_filling(void* arg) {
         fuel += 60;
         printf("Filled fuel... %d\n", fuel);
         pthread_mutex_unlock(&mutexFuel);
-        // Checking behavior when cond is signalled and not broadcasted:
-        // - in that case only one car receives the signal and takes the fuel
+        // Checking behavior when 'cond' is signalled and not broadcasted:
+        // - in that case only one 'car' receives the signal and takes the 'fuel'
         // pthread_cond_signal(&condFuel); 
         pthread_cond_broadcast(&condFuel);
         sleep(1);

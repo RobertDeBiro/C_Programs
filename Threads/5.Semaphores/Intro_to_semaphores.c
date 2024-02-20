@@ -1,7 +1,7 @@
 /*
  * Locking the code with semaphore
- *  - since in this example we are increasing the value of semaphore every iteration, we are actually not
- *    showing how exactly semaphore is used in practice
+   - since in this example we are increasing the value of semaphore every iteration, we are actually not
+     showing how exactly semaphore is used in practice
  */
 
 #include <stdlib.h> // srand, rand
@@ -15,8 +15,7 @@
 sem_t semaphore;
 
 void* routine(void *args) {
-    // sem_wait decrements semaphore value if value is greater then 0, and if it is not greater then
-    // it waits
+    // 'sem_wait' decrements semaphore value if value is greater then 0, otherwise it waits
     sem_wait(&semaphore);
     sleep(1);
     printf("Hello from thread %d\n", *(int*)args);
@@ -29,7 +28,7 @@ int main(int argc, char *argv[]) {
 
     pthread_t th[THREAD_NUM];
 
-    // Initialize semaphore:
+    // Initialize semaphore
     sem_init(&semaphore, 0, 2);
 
     int i;
